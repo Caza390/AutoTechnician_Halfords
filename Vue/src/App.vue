@@ -12,12 +12,12 @@ const closeDropdown = () => {
 
 <template>
 
-  <div class="bg-halfords-background-900 min-h-screen">
-    <div>
-      <p class="bg-red-700">App.vue</p>
+  <div class="bg-halfords-background-50 min-h-screen">
+    <div class="bg-halfords-background-950">
+      <p class="text-halfords-orange-400 text-3xl md:text-5xl font-bold p-5">Halfords Auto Technician</p>
     </div>
 
-    <main class="">
+    <main>
       <RouterView />
     </main>
   </div>
