@@ -4,6 +4,7 @@ import SupportView from '../views/SupportView.vue'
 
 import MakeView from '../components/MakeView.vue'
 import ModelView from '../components/ModelView.vue'
+import YearView from '../components/YearView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/:category/:make/',
       name: 'model',
       component: ModelView,
+    },
+    {
+      path: '/:category/:make/:model/',
+      name: 'year',
+      component: YearView,
     },
   ]
 })
