@@ -10,7 +10,7 @@ const years = ref<any[]>([]);
 
 const loadYears = async () => {
   try {
-    let allYears: Array<{ id: string; category: string; Make: string; Model: string; Year: string; Logo: string }> = [];
+    let allYears: Array<{ id: string; category: string; Make: string; Model: string; Year: string }> = [];
 
     switch (category.value) {
       case "dash-camera":
@@ -64,14 +64,8 @@ watch(() => [route.params.category, route.params.make, route.params.model], load
     <div v-if="years.length > 0" class="grid grid-cols-3 gap-5">
       <RouterLink v-for="year in years" :key="year.id" :to="`/${category}/${make}/${model}/${year.Year}`"
         class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-        <img :src="year.Logo" :alt="year.Year" class="w-24 h-24 object-contain" />
         <p class="mt-3 font-bold text-black">{{ year.Year }}</p>
       </RouterLink>
-    </div>
-
-    <div v-else>
-      <p class="text-red-500 text-lg mb-4">No Data Provided</p>
-      <RouterLink to="/" class="border-4 p-1">Return</RouterLink>
     </div>
   </main>
 </template>
