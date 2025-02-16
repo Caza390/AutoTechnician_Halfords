@@ -27,8 +27,8 @@ const loadModels = async () => {
 
     models.value = allModels.filter(
       (model) => model.Make.toLowerCase() === String(make.value).toLowerCase()
-
     );
+    
   } catch (error) {
     console.error("Error loading models:", error);
     models.value = [];
@@ -42,25 +42,21 @@ watch(() => [route.params.category, route.params.make], loadModels);
 <template>
   <main class="flex flex-col items-center p-10">
     <h1 class="text-3xl font-bold mb-5">
-  {{ typeof category === "string" 
-      ? category.replace("-", " ").replace(/\b\w/g, (char) => char.toUpperCase()) 
-      : "Unknown Category" 
-  }} 
-  - 
-  {{ typeof make === "string" 
-      ? make.replace("-", " ").replace(/\b\w/g, (char) => char.toUpperCase()) 
-      : "Unknown Make" 
-  }}
-</h1>
+      {{typeof category === "string"
+        ? category.replace("-", " ").replace(/\b\w/g, (char) => char.toUpperCase())
+        : "Unknown Category"
+      }}
+      -
+      {{typeof make === "string"
+        ? make.replace("-", " ").replace(/\b\w/g, (char) => char.toUpperCase())
+        : "Unknown Make"
+      }}
+    </h1>
 
 
     <div v-if="models.length > 0" class="grid grid-cols-3 gap-5">
-      <RouterLink 
-        v-for="model in models" 
-        :key="model.id" 
-        :to="`/${category}/${make}/${model.Model.toLowerCase()}`"
-        class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500"
-      >
+      <RouterLink v-for="model in models" :key="model.id" :to="`/${category}/${make}/${model.Model.toLowerCase()}`"
+        class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <img :src="model.Logo" :alt="model.Model" class="w-24 h-24 object-contain" />
         <p class="mt-3 font-bold text-black">{{ model.Model }}</p>
       </RouterLink>
