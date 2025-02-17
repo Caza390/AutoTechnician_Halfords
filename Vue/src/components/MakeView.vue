@@ -45,7 +45,7 @@ watch(() => route.params.category, loadMakes);
     </h1>
 
     <!-- `Category Makes -->
-    <div v-if="makes.length > 0" class="grid grid-cols-3 gap-5">
+    <div v-if="makes.length > 0" class="grid grid-cols-4 gap-8">
       <RouterLink v-for="make in makes" :key="make.id" :to="`/${category}/${make.Make.toLowerCase()}`"
         class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <img :src="make.Logo" :alt="make.Make" class="w-24 h-24 object-contain" />
