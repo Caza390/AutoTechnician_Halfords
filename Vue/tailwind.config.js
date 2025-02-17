@@ -20,7 +20,7 @@ module.exports = {
           '950': '#461002',
         },
         'halfords-background': {
-          '50': '#f6f6f6',
+          '50': '#4f4f4f',    //offical colour f6f6f6
           '100': '#e7e7e7',
           '200': '#d1d1d1',
           '300': '#b0b0b0',

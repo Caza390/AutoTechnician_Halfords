@@ -46,7 +46,7 @@ watch(() => [route.params.category, route.params.make], loadModels);
         ? category.replace("-", " ").replace(/\b\w/g, (char) => char.toUpperCase())
         : "Unknown Category"
       }}
-      -
+      /
       {{typeof make === "string"
         ? make.replace("-", " ").replace(/\b\w/g, (char) => char.toUpperCase())
         : "Unknown Make"
@@ -54,7 +54,7 @@ watch(() => [route.params.category, route.params.make], loadModels);
     </h1>
 
 
-    <div v-if="models.length > 0" class="grid grid-cols-3 gap-5">
+    <div v-if="models.length > 0" class="grid grid-cols-4 gap-8">
       <RouterLink v-for="model in models" :key="model.id" :to="`/${category}/${make}/${model.Model.toLowerCase()}`"
         class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <img :src="model.Logo" :alt="model.Model" class="w-24 h-24 object-contain" />
