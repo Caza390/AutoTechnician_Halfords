@@ -1,13 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import SupportView from '../views/SupportView.vue'
 
 import MakeView from '../components/MakeView.vue'
 import ModelView from '../components/ModelView.vue'
-import YearView from '../components/YearView.vue'
+import CategoryView from '../components/CategoryView.vue'
 import DashCameraResults from '../components/DashCameraResults.vue'
-import AudioResults from '../components/AudioResults.vue'
+import RadioResults from '../components/RadioResults.vue'
 import SpeakersResults from '../components/SpeakersResults.vue'
+
+import DashCameraInfoSupport from '../components/InfoSupport/DashCameraVue/DashCameraInfoSupport.vue'
+
+import RadioInfoSupport from '../components/InfoSupport/RadioVue/RadioInfoSupport .vue'
+
+import SpeakersInfoSupport from '../components/InfoSupport/SpeakersVue/SpeakersInfoSupport.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,41 +22,54 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
-    {
-      path: '/support',
-      name: 'support',
-      component: SupportView,
-    },
 
     {
-      path: '/:category/',
+      path: '/vehicle-select/',
       name: 'make',
       component: MakeView,
     },
     {
-      path: '/:category/:make/',
+      path: '/vehicle-select/:make/',
       name: 'model',
       component: ModelView,
     },
     {
-      path: '/:category/:make/:model/',
-      name: 'year',
-      component: YearView,
+      path: '/vehicle-select/:make/:model/:year',
+      name: 'category',
+      component: CategoryView,
     },
     {
-      path: '/dash-camera/:make/:model/:year/',
-      name: 'dashcameraresults',
+      path: '/vehicle-select/:make/:model/:year/dash-camera',
+      name: 'dashCameraResults',
       component: DashCameraResults,
     },
     {
-      path: '/audio/:make/:model/:year/',
-      name: 'audioresults',
-      component: AudioResults,
+      path: '/vehicle-select/:make/:model/:year/audio',
+      name: 'audioResults',
+      component: RadioResults,
     },
     {
-      path: '/speakers/:make/:model/:year/',
-      name: 'speakersresults',
+      path: '/vehicle-select/:make/:model/:year/speakers',
+      name: 'speakersResults',
       component: SpeakersResults,
+    },
+
+    {
+      path: '/dash-camera-info-support',
+      name: 'dashCameraInfoSupport',
+      component: DashCameraInfoSupport,
+    },
+
+    {
+      path: '/radio-info-support',
+      name: 'radioInfoSupport',
+      component: RadioInfoSupport,
+    },
+
+    {
+      path: '/speakers-info-support',
+      name: 'speakersInfoSupport',
+      component: SpeakersInfoSupport,
     },
   ]
 })
