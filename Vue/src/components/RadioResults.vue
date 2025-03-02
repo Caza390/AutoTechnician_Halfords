@@ -8,10 +8,10 @@ const model = ref(route.params.model);
 const year = ref(route.params.year);
 const type = ref(route.params.type);
 const availableTypes = ref<any[]>([]);
-const speakers = ref<any[]>([]);
+const radios = ref<any[]>([]);
 const showTypes = ref(false);
 
-const loadSpeakerData = async () => {
+const loadRadioData = async () => {
   try {
     // Ensure params are treated as strings
     const makeValue = String(make.value);
@@ -22,7 +22,7 @@ const loadSpeakerData = async () => {
     console.log("Parameters:", { makeValue, modelValue, yearValue, typeValue });
 
     // Load available kit types
-    const allTypes = (await import("./Data/Type/SpeakersType")).default;
+    const allTypes = (await import("./Data/Type/RadioType")).default;
     const matchedTypes = allTypes.filter(
       (t) =>
         t.Make.toLowerCase() === makeValue.toLowerCase() &&
@@ -35,37 +35,37 @@ const loadSpeakerData = async () => {
 
     console.log("Matched Kit Types:", availableTypes.value);
 
-    // Load speaker results
-    const allSpeakers = (await import("./Data/Results/SpeakersResults")).default;
-    let matchedSpeakers = allSpeakers.filter(
+    // Load radio results
+    const allRadios = (await import("./Data/Results/RadioResults")).default;
+    let matchedRadios = allRadios.filter(
       (r) =>
         r.Make.toLowerCase() === makeValue.toLowerCase() &&
         r.Model.toLowerCase() === modelValue.toLowerCase() &&
         r.Year === yearValue
     );
 
-    console.log("Matched Speakers before type filtering:", matchedSpeakers);
+    console.log("Matched Radios before type filtering:", matchedRadios);
 
-    // If a type is selected, filter speakers based on KitType
+    // If a type is selected, filter radios based on KitType
     if (typeValue) {
-      matchedSpeakers = matchedSpeakers.filter((r) => {
+      matchedRadios = matchedRadios.filter((r) => {
         const kitType = r.KitType ? r.KitType.toLowerCase().trim() : "";
         console.log(`Comparing "${kitType}" with "${typeValue.toLowerCase().trim()}"`);
         return kitType === typeValue.toLowerCase().trim();
       });
     }
 
-    console.log("Filtered Speakers after type filtering:", matchedSpeakers);
+    console.log("Filtered Radios after type filtering:", matchedRadios);
 
-    speakers.value = matchedSpeakers;
+    radios.value = matchedRadios;
   } catch (error) {
-    console.error("Error loading speaker data:", error);
-    speakers.value = [];
+    console.error("Error loading Radio data:", error);
+    radios.value = [];
     showTypes.value = false;
   }
 };
 
-onMounted(loadSpeakerData);
+onMounted(loadRadioData);
 
 // Watch for changes in the route parameters
 watch(() => route.params, () => {
@@ -73,13 +73,13 @@ watch(() => route.params, () => {
   model.value = route.params.model;
   year.value = route.params.year;
   type.value = route.params.type;
-  loadSpeakerData(); // Reload the data when route changes
+  loadRadioData(); // Reload the data when route changes
 });
 </script>
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/speakers/${make}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">Return</RouterLink>
+    <RouterLink :to="`/radio/${make}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">Return</RouterLink>
   </div>
 
   <!-- Add the key to the root element to force re-render when route changes -->
@@ -93,7 +93,7 @@ watch(() => route.params, () => {
     <!-- Step 1: Show Kit Type Selection -->
     <div v-if="showTypes && !type" class="grid grid-cols-4 gap-8">
       <RouterLink v-for="kit in availableTypes" :key="kit.id"
-        :to="`/speakers/${make}/${model}/${year}/${kit.KitType.toLowerCase().replace(/\s+/g, '-')}`"
+        :to="`/radio/${make}/${model}/${year}/${kit.KitType.toLowerCase().replace(/\s+/g, '-')}`"
         class="bg-gray-200 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-gray-300">
         <img :src="kit.KitImage" :alt="kit.KitType" class="w-30 h-30 py-4 object-contain" />
         <p class="mt-3 font-bold text-black text-3xl">{{ kit.KitType }}</p>
@@ -101,14 +101,14 @@ watch(() => route.params, () => {
       </RouterLink>
     </div>
 
-    <!-- Step 2: Show speaker Results if Type is Selected OR No Type Exists -->
-    <div v-if="speakers.length > 0 && (!showTypes || type)" class="grid grid-cols-4 gap-8">
-      <div v-for="speaker in speakers" :key="speaker.id"
-        :to="`/speakers/${make}/${model}/${year}/${type ? type + '/' : ''}${speaker.Part.toLowerCase()}`"
+    <!-- Step 2: Show Radio Results if Type is Selected OR No Type Exists -->
+    <div v-if="radios.length > 0 && (!showTypes || type)" class="grid grid-cols-4 gap-8">
+      <div v-for="radio in radios" :key="radio.id"
+        :to="`/radio/${make}/${model}/${year}/${type ? type + '/' : ''}${radio.Part.toLowerCase()}`"
         class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-        <img :src="speaker.PartImage" :alt="speaker.Part" class="w-30 h-30 py-4 object-contain" />
-        <p class="mt-3 font-bold text-black text-3xl">{{ speaker.Part }}</p>
-        <p class="text-gray-600">{{ speaker.Description }}</p>
+        <img :src="radio.PartImage" :alt="radio.Part" class="w-30 h-30 py-4 object-contain" />
+        <p class="mt-3 font-bold text-black text-3xl">{{ radio.Part }}</p>
+        <p class="text-gray-600">{{ radio.Description }}</p>
       </div>
     </div>
 
