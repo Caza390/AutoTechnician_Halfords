@@ -10,15 +10,15 @@
     </div>
 
     <div class="grid grid-cols-3 gap-20">
-      <RouterLink :to="'/speakers-info-support/speaker-information'"
+      <RouterLink :to="'/radio-info-support/radio-information'"
         class="bg-halfords-orange-400 w-72 h-72 p-6 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
           <img src="/Images/Models/Insignia.png" alt="information" class="w-full h-full object-contain" />
         </div>
-        <p class="mt-3 font-bold text-black text-3xl text-center">Speaker Information</p>
+        <p class="mt-3 font-bold text-black text-3xl text-center">Radio Information</p>
       </RouterLink>
 
-      <RouterLink :to="'/speakers-info-support/how-to'"
+      <RouterLink :to="'/radio-info-support/how-to'"
         class="bg-halfords-orange-400 w-72 h-72 p-6 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
           <img src="/Images/Models/Insignia.png" alt="how-to" class="w-full h-full object-contain" />
@@ -26,7 +26,7 @@
         <p class="mt-3 font-bold text-black text-3xl text-center">How To</p>
       </RouterLink>
 
-      <RouterLink :to="'/speakers-info-support/troubleshooting'"
+      <RouterLink :to="'/radio-info-support/troubleshooting'"
         class="bg-halfords-orange-400 w-72 h-72 p-6 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
           <img src="/Images/Models/Insignia.png" alt="troubleshoot" class="w-full h-full object-contain" />

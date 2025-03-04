@@ -79,11 +79,12 @@ watch(() => route.params, () => {
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/radio/${make}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">Return</RouterLink>
+    <RouterLink :to="`/radio/${make}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+      Return
+    </RouterLink>
   </div>
 
-  <!-- Add the key to the root element to force re-render when route changes -->
-  <main :key="route.path" class="flex flex-col items-center p-10">
+  <main class="flex flex-col items-center p-10">
     <h1 class="text-3xl font-bold mb-5">
       {{ String(make).replace("-", " ").toUpperCase() }} /
       {{ String(model).replace("-", " ").toUpperCase() }} /
@@ -93,29 +94,26 @@ watch(() => route.params, () => {
     <!-- Step 1: Show Kit Type Selection -->
     <div v-if="showTypes && !type" class="grid grid-cols-4 gap-8">
       <RouterLink v-for="kit in availableTypes" :key="kit.id"
-        :to="`/radio/${make}/${model}/${year}/${kit.KitType.toLowerCase().replace(/\s+/g, '-')}`"
-        class="bg-gray-200 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-gray-300">
-        <img :src="kit.KitImage" :alt="kit.KitType" class="w-30 h-30 py-4 object-contain" />
-        <p class="mt-3 font-bold text-black text-3xl">{{ kit.KitType }}</p>
-        <p class="text-gray-600">{{ kit.Description }}</p>
+        :to="`/vehicle-select/${make}/${model}/${year}/audio/${kit.KitType.toLowerCase().replace(/\s+/g, '-')}`"
+        class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
+        <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
+          <img :src="kit.KitImage" :alt="kit.KitType" class="w-full h-full object-contain" />
+        </div>
+        <p class="mt-3 font-bold text-black text-3xl text-center">{{ kit.KitType }}</p>
+        <p class="text-gray-600 text-center">{{ kit.Description }}</p>
       </RouterLink>
     </div>
 
     <!-- Step 2: Show Radio Results if Type is Selected OR No Type Exists -->
     <div v-if="radios.length > 0 && (!showTypes || type)" class="grid grid-cols-4 gap-8">
       <div v-for="radio in radios" :key="radio.id"
-        :to="`/radio/${make}/${model}/${year}/${type ? type + '/' : ''}${radio.Part.toLowerCase()}`"
         class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-        <img :src="radio.PartImage" :alt="radio.Part" class="w-30 h-30 py-4 object-contain" />
-        <p class="mt-3 font-bold text-black text-3xl">{{ radio.Part }}</p>
-        <p class="text-gray-600">{{ radio.Description }}</p>
+        <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
+          <img :src="radio.PartImage" :alt="radio.Part" class="w-full h-full object-contain" />
+        </div>
+        <p class="mt-3 font-bold text-black text-3xl text-center">{{ radio.Part }}</p>
+        <p class="text-gray-600 text-center">{{ radio.Description }}</p>
       </div>
-    </div>
-
-    <!-- Step 3: No Data Available -->
-    <div v-else-if="!showTypes">
-      <p class="text-red-500 text-lg mb-4">No Data Provided</p>
-      <RouterLink to="/" class="border-4 p-1">Return</RouterLink>
     </div>
   </main>
 </template>
