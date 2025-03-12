@@ -51,7 +51,7 @@ onMounted(loadModels);
       <RouterLink v-for="model in models" :key="model.Model"
         :to="`/vehicle-select/${make}/${model.Model.toLowerCase()}/${model.Year}`"
         class="bg-halfords-orange-400 w-72 h-72 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-        <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
+        <div class="w-56 h-36 bg-white border border-black flex items-center justify-center">
           <img :src="model.Image" :alt="model.Model" class="w-full h-full object-contain" />
         </div>
         <p class="mt-3 font-bold text-black text-3xl text-center">{{ model.Model }}</p>
