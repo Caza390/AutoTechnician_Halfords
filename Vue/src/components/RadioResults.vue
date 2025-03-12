@@ -79,7 +79,7 @@ watch(() => route.params, () => {
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/radio/${make}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+    <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
       Return
     </RouterLink>
   </div>
@@ -88,7 +88,7 @@ watch(() => route.params, () => {
     <h1 class="text-3xl font-bold mb-5">
       {{ String(make).replace("-", " ").toUpperCase() }} /
       {{ String(model).replace("-", " ").toUpperCase() }} /
-      {{ year }}
+      {{ year }} / Radio
     </h1>
 
     <!-- Step 1: Show Kit Type Selection -->
@@ -96,7 +96,7 @@ watch(() => route.params, () => {
       <RouterLink v-for="kit in availableTypes" :key="kit.id"
         :to="`/vehicle-select/${make}/${model}/${year}/audio/${kit.KitType.toLowerCase().replace(/\s+/g, '-')}`"
         class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-        <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
+        <div class="w-56 h-36 bg-white border border-black flex items-center justify-center">
           <img :src="kit.KitImage" :alt="kit.KitType" class="w-full h-full object-contain" />
         </div>
         <p class="mt-3 font-bold text-black text-3xl text-center">{{ kit.KitType }}</p>
@@ -108,7 +108,7 @@ watch(() => route.params, () => {
     <div v-if="radios.length > 0 && (!showTypes || type)" class="grid grid-cols-4 gap-8">
       <div v-for="radio in radios" :key="radio.id"
         class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-        <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
+        <div class="w-56 h-36 bg-white border border-black flex items-center justify-center">
           <img :src="radio.PartImage" :alt="radio.Part" class="w-full h-full object-contain" />
         </div>
         <p class="mt-3 font-bold text-black text-3xl text-center">{{ radio.Part }}</p>

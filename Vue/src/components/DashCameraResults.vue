@@ -53,57 +53,67 @@ const dashCamInfo = computed(() =>
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/dash-camera/${make}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">Return</RouterLink>
+    <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+      Return
+    </RouterLink>
   </div>
 
   <main class="flex flex-col items-center p-10">
     <h1 class="text-3xl font-bold mb-5">
-      Dash Camera / {{ formattedMake }} / {{ formattedModel }} / {{ formattedYear }}
+      {{ formattedMake }} / {{ formattedModel }} / {{ formattedYear }} / Dash Camera
     </h1>
 
     <!-- Dropdown Sections -->
     <div v-if="dashCamInfo" class="w-full max-w-xl">
-      
+
       <!-- Equipment -->
-      <button @click="toggleDropdown('equipment')" class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
+      <button @click="toggleDropdown('equipment')"
+        class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
         Equipment
       </button>
-      <div v-if="dropdownStates.equipment" class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
+      <div v-if="dropdownStates.equipment"
+        class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
         <div v-for="(item, index) in dashCamInfo.Equiptment.split(', ')" :key="index" class="p-2">
           <p>{{ item }}</p>
         </div>
       </div>
 
       <!-- Fuse Guide -->
-      <button @click="toggleDropdown('fuse')" class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
+      <button @click="toggleDropdown('fuse')"
+        class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
         Fuse Guide
       </button>
-      <div v-if="dropdownStates.fuse" class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
+      <div v-if="dropdownStates.fuse"
+        class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
         <div v-for="(fuse, index) in dashCamInfo.FuseText.split(', ')" :key="index" class="p-2">
           <p>{{ fuse }}</p>
         </div>
       </div>
 
       <!-- Front Camera -->
-      <button @click="toggleDropdown('front')" class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
+      <button @click="toggleDropdown('front')"
+        class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
         Front Location
       </button>
-      <div v-if="dropdownStates.front" class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
+      <div v-if="dropdownStates.front"
+        class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
         <div v-for="(fcamera, index) in dashCamInfo.FrontLocation.split(', ')" :key="index" class="p-2">
           <p>{{ fcamera }}</p>
         </div>
       </div>
 
       <!-- Rear Camera -->
-      <button @click="toggleDropdown('rear')" class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
+      <button @click="toggleDropdown('rear')"
+        class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
         Rear Location
       </button>
-      <div v-if="dropdownStates.rear" class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
+      <div v-if="dropdownStates.rear"
+        class="mb-4 bg-halfords-background-50 border border-halfords-Background-950 rounded-lg shadow-lg w-full p-3">
         <div v-for="(rcamera, index) in dashCamInfo.RearLocation.split(', ')" :key="index" class="p-2">
           <p>{{ rcamera }}</p>
         </div>
       </div>
-      
+
     </div>
 
     <p v-else class="text-red-500 text-lg font-semibold">No dash camera data found for this vehicle.</p>

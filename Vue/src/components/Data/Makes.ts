@@ -52,7 +52,7 @@ export default [
     {
         id: "11",
         Make: "Landrover",
-        Image: "/Images/Brand/Landrover.png",
+        Image: "/Images/Brand/LandRover.png",
     },
     {
         id: "12",

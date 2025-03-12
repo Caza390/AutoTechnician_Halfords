@@ -79,7 +79,10 @@ watch(() => route.params, () => {
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/speakers/${make}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">Return</RouterLink>
+    <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`"
+      class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+      Return
+    </RouterLink>
   </div>
 
   <!-- Add the key to the root element to force re-render when route changes -->
@@ -87,7 +90,7 @@ watch(() => route.params, () => {
     <h1 class="text-3xl font-bold mb-5">
       {{ String(make).replace("-", " ").toUpperCase() }} /
       {{ String(model).replace("-", " ").toUpperCase() }} /
-      {{ year }}
+      {{ year }} / Speakers
     </h1>
 
     <!-- Step 1: Show Kit Type Selection -->
