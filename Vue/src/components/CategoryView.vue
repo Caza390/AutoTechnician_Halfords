@@ -12,7 +12,7 @@ const year = route.params.year as string;
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/vehicle-select/${make}/`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+    <RouterLink :to="`/vehicle-select/${make}/`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">
       Return
     </RouterLink>
   </div>

@@ -33,7 +33,8 @@ onMounted(loadModels);
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="'/vehicle-select'" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+    <RouterLink :to="'/vehicle-select'"
+      class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">
       Return
     </RouterLink>
   </div>
@@ -60,8 +61,8 @@ onMounted(loadModels);
     </div>
 
     <div v-else>
-      <p class="text-red-500 text-lg mb-4">No Data Provided</p>
-      <RouterLink :to="'/vehicle-select'" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">Return
+      <p class="text-red-500 bg-halfords-background-950 px-1 text-lg font-bold mb-4">No Models Provided</p>
+      <RouterLink :to="'/vehicle-select'" class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">Return
       </RouterLink>
     </div>
   </main>
