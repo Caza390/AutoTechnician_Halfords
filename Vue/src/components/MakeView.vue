@@ -25,7 +25,7 @@ onMounted(loadMakes);
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+    <RouterLink :to="`/`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">
       Return
     </RouterLink>
   </div>
@@ -33,7 +33,7 @@ onMounted(loadMakes);
   <main class="flex justify-center items-center p-20">
     <div class="grid grid-cols-4 gap-8">
       <RouterLink v-for="make in makes" :key="make.id" :to="`/vehicle-select/${make.Make.toLowerCase()}`"
-      class="bg-halfords-orange-400 w-72 h-72 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
+        class="bg-halfords-orange-400 w-72 h-72 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-white border border-black flex items-center justify-center">
           <img :src="make.Image" :alt="make.Make" class="w-full h-full object-contain" />
         </div>

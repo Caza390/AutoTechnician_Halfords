@@ -14,7 +14,7 @@ const toggleSpecifications = (index: number) => {
 <template>
   <main class="flex justify-center items-center p-20">
     <div class="absolute top-8 right-6">
-      <RouterLink to="/dash-camera-info-support" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+      <RouterLink to="/dash-camera-info-support" class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">
         Return
       </RouterLink>
     </div>

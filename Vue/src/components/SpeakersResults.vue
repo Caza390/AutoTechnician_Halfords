@@ -19,10 +19,8 @@ const loadSpeakerData = async () => {
     const yearValue = String(year.value);
     const typeValue = type.value ? decodeURIComponent(String(type.value)).trim() : "";
 
-    console.log("Parameters:", { makeValue, modelValue, yearValue, typeValue });
-
     // Load available kit types
-    const allTypes = (await import("./Data/Type/SpeakersType")).default;
+    const allTypes = (await import("./Data/Speakers/SpeakersType")).default;
     const matchedTypes = allTypes.filter(
       (t) =>
         t.Make.toLowerCase() === makeValue.toLowerCase() &&
@@ -33,10 +31,8 @@ const loadSpeakerData = async () => {
     showTypes.value = matchedTypes.length > 0;
     availableTypes.value = matchedTypes;
 
-    console.log("Matched Kit Types:", availableTypes.value);
-
     // Load speaker results
-    const allSpeakers = (await import("./Data/Results/SpeakersResults")).default;
+    const allSpeakers = (await import("./Data/Speakers/SpeakersResults")).default;
     let matchedSpeakers = allSpeakers.filter(
       (r) =>
         r.Make.toLowerCase() === makeValue.toLowerCase() &&
@@ -44,18 +40,13 @@ const loadSpeakerData = async () => {
         r.Year === yearValue
     );
 
-    console.log("Matched Speakers before type filtering:", matchedSpeakers);
-
     // If a type is selected, filter speakers based on KitType
     if (typeValue) {
       matchedSpeakers = matchedSpeakers.filter((r) => {
         const kitType = r.KitType ? r.KitType.toLowerCase().trim() : "";
-        console.log(`Comparing "${kitType}" with "${typeValue.toLowerCase().trim()}"`);
         return kitType === typeValue.toLowerCase().trim();
       });
     }
-
-    console.log("Filtered Speakers after type filtering:", matchedSpeakers);
 
     speakers.value = matchedSpeakers;
   } catch (error) {
@@ -67,7 +58,6 @@ const loadSpeakerData = async () => {
 
 onMounted(loadSpeakerData);
 
-// Watch for changes in the route parameters
 watch(() => route.params, () => {
   make.value = route.params.make;
   model.value = route.params.model;
@@ -80,12 +70,11 @@ watch(() => route.params, () => {
 <template>
   <div class="absolute top-8 right-6">
     <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`"
-      class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+      class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">
       Return
     </RouterLink>
   </div>
 
-  <!-- Add the key to the root element to force re-render when route changes -->
   <main :key="route.path" class="flex flex-col items-center p-10">
     <h1 class="text-3xl font-bold mb-5">
       {{ String(make).replace("-", " ").toUpperCase() }} /
@@ -115,10 +104,12 @@ watch(() => route.params, () => {
       </div>
     </div>
 
-    <!-- Step 3: No Data Available -->
     <div v-else-if="!showTypes">
-      <p class="text-red-500 text-lg mb-4">No Data Provided</p>
-      <RouterLink to="/" class="border-4 p-1">Return</RouterLink>
+      <p class="text-xl font-bold mb-5">No Speaker Data Provided For
+        This Vehicle</p>
+      <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`"
+        class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">Return
+      </RouterLink>
     </div>
   </main>
 </template>

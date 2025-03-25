@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, computed } from "vue";
 import { useRoute } from "vue-router";
-import dashCameraData from "./Data/Results/DashCameraResults";
+import dashCameraData from "./Data/DashCameras/DashCameraResults";
 
 const route = useRoute();
 const make = ref(route.params.make);
@@ -53,7 +53,8 @@ const dashCamInfo = computed(() =>
 
 <template>
   <div class="absolute top-8 right-6">
-    <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`" class="bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-700">
+    <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`"
+      class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">
       Return
     </RouterLink>
   </div>
@@ -63,9 +64,8 @@ const dashCamInfo = computed(() =>
       {{ formattedMake }} / {{ formattedModel }} / {{ formattedYear }} / Dash Camera
     </h1>
 
-    <!-- Dropdown Sections -->
-    <div v-if="dashCamInfo" class="w-full max-w-xl">
 
+    <div v-if="dashCamInfo" class="w-full max-w-xl">
       <!-- Equipment -->
       <button @click="toggleDropdown('equipment')"
         class="border-2 border-halfords-orange-400 bg-halfords-background-950 text-halfords-orange-400 text-3xl font-bold my-2 py-2 px-4 rounded w-full">
@@ -113,9 +113,14 @@ const dashCamInfo = computed(() =>
           <p>{{ rcamera }}</p>
         </div>
       </div>
-
     </div>
 
-    <p v-else class="text-red-500 text-lg font-semibold">No dash camera data found for this vehicle.</p>
+    <div v-else>
+      <p class="text-xl font-bold mb-5">No Dash Camera Data
+        Provided For This Vehicle</p>
+      <RouterLink :to="`/vehicle-select/${make}/${model}/${year}`"
+        class="bg-red-500 px-4 py-2 rounded-lg shadow-md text-xl font-bold hover:bg-red-700">Return
+      </RouterLink>
+    </div>
   </main>
 </template>
