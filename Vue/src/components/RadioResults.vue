@@ -9,6 +9,7 @@ const model = ref(route.params.model);
 const year = ref(route.params.year);
 const type = ref(route.params.type);
 
+const guideLinks = ref<any[]>([]);
 const fullKits = ref<any[]>([]);
 const fascias = ref<any[]>([]);
 const harnesses = ref<any[]>([]);
@@ -54,6 +55,22 @@ const loadRadioData = async () => {
 
     showTypes.value = matchedTypes.length > 0;
     availableTypes.value = matchedTypes;
+
+    // Guide Links    
+    const allGuideLinks = (await import("./Data/Radio/RadioGuideLists")).default;
+    console.log("All Guides:", allGuideLinks);
+
+    let matchedGuideLink = allGuideLinks.filter((r) =>
+      r.Car.some(
+        (c) =>
+          c.Make.trim().toLowerCase() === makeValue.toLowerCase() &&
+          c.Model.trim().toLowerCase() === modelValue.toLowerCase() &&
+          String(c.Year).trim() === yearValue
+      )
+    );
+
+    guideLinks.value = matchedGuideLink;
+    console.log("Final Guide Link:", guideLinks.value);
 
     // Load Radio Kits
     const allRadios = (await import("./Data/Radio/RadioKits")).default;
@@ -238,8 +255,26 @@ watch(() => route.params, () => {
       </RouterLink>
     </div>
 
+    <!-- Guide Links -->
+    <div v-if="!(showTypes && !type) && guideLinks.length" class="flex flex-col items-center">
+      <h2
+        class="text-2xl font-bold text-center mb-4 w-full h-10 border-2 rounded text-halfords-orange-400 bg-halfords-background-950 border-halfords-orange-500">
+        Guide Links
+      </h2>
+      <div class="grid grid-cols-4 gap-4">
+        <div v-for="guide in guideLinks" :key="guide.id"
+          class="bg-halfords-orange-400 w-72 h-92 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
+          <p class="mt-3 font-bold text-black text-3xl text-center">{{ guide.GuideType }}</p>
+          <a :href="guide.Link.startsWith('http') ? guide.Link : 'https://' + guide.Link" target="_blank" rel="noopener noreferrer"
+            class="text-blue-500 hover:underline text-center block">
+            link
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- Full Kit Section -->
-    <div v-if="!(showTypes && !type) && fullKits.length" class="flex flex-col items-center">
+    <div v-if="!(showTypes && !type) && fullKits.length" class="flex flex-col items-center justify-center mt-10">
       <h2
         class="text-2xl font-bold text-center mb-4 w-full h-10 border-2 rounded text-halfords-orange-400 bg-halfords-background-950 border-halfords-orange-500">
         Full Kit
@@ -267,7 +302,8 @@ watch(() => route.params, () => {
       <div class="grid grid-cols-4 gap-4 justify-center">
         <div v-for="fascia in fascias" :key="fascia.id"
           class="bg-halfords-orange-400 w-72 h-92 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center" @click="openModal(fascia)">
+          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center"
+            @click="openModal(fascia)">
             <img :src="fascia.PartImage" :alt="fascia.Part" class="w-full h-full object-contain" />
           </div>
           <p class="mt-3 font-bold text-black text-3xl text-center">{{ fascia.Part }}</p>
@@ -286,7 +322,8 @@ watch(() => route.params, () => {
       <div class="grid grid-cols-4 gap-4 justify-center">
         <div v-for="harness in harnesses" :key="harness.id"
           class="bg-halfords-orange-400 w-72 h-92 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center" @click="openModal(harness)">
+          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center"
+            @click="openModal(harness)">
             <img :src="harness.PartImage" :alt="harness.Part" class="w-full h-full object-contain" />
           </div>
           <p class="mt-3 font-bold text-black text-3xl text-center">{{ harness.Part }}</p>
@@ -306,7 +343,8 @@ watch(() => route.params, () => {
       <div class="grid grid-cols-4 gap-4 justify-center">
         <div v-for="aerial in aerials" :key="aerial.id"
           class="bg-halfords-orange-400 w-72 h-92 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center" @click="openModal(aerial)">
+          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center"
+            @click="openModal(aerial)">
             <img :src="aerial.PartImage" :alt="aerial.Part" class="w-full h-full object-contain" />
           </div>
           <p class="mt-3 font-bold text-black text-3xl text-center">{{ aerial.Part }}</p>
@@ -325,7 +363,8 @@ watch(() => route.params, () => {
       <div class="grid grid-cols-4 gap-4 justify-center">
         <div v-for="parkingAid in parkingAid" :key="parkingAid.id"
           class="bg-halfords-orange-400 w-72 h-92 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center" @click="openModal(parkingAid)">
+          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center"
+            @click="openModal(parkingAid)">
             <img :src="parkingAid.PartImage" :alt="parkingAid.Part" class="w-full h-full object-contain" />
           </div>
           <p class="mt-3 font-bold text-black text-3xl text-center">{{ parkingAid.Part }}</p>
@@ -344,7 +383,8 @@ watch(() => route.params, () => {
       <div class="grid grid-cols-4 gap-4 justify-center">
         <div v-for="extraCables in extraCables" :key="extraCables.id"
           class="bg-halfords-orange-400 w-72 h-92 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
-          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center" @click="openModal(extraCables)">
+          <div class="w-56 h-36 bg-white border border-black flex items-center justify-center"
+            @click="openModal(extraCables)">
             <img :src="extraCables.PartImage" :alt="extraCables.Part" class="w-full h-full object-contain" />
           </div>
           <p class="mt-3 font-bold text-black text-3xl text-center">{{ extraCables.Part }}</p>
