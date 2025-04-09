@@ -10,6 +10,7 @@ export default [
       FuseText: "",
       FrontLocation: "insigna-0813-f-dash-camera-location",
       RearLocation: "insigna-0813-r-dash-camera-location",
+      VideoLink: "",
     },
   ];
   

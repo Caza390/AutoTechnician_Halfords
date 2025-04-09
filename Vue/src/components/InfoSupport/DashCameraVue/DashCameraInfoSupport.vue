@@ -13,7 +13,7 @@
       <RouterLink :to="'/dash-camera-info-support/camera-information'"
         class="bg-halfords-orange-400 w-72 h-72 p-6 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
-          <img src="/Images/DashCamera.png" alt="information" class="w-full h-full object-contain" />
+          <img src="/Images/DashCameraImages/DashCameraMain.png" alt="information" class="h-full w-full object-cover" />
         </div>
         <p class="mt-3 font-bold text-black text-3xl text-center">Dash Camera Information</p>
       </RouterLink>
@@ -21,7 +21,7 @@
       <RouterLink :to="'/dash-camera-info-support/how-to'"
         class="bg-halfords-orange-400 w-72 h-72 p-6 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
-          <img src="/Images/DashCamera.png" alt="how-to" class="w-full h-full object-contain" />
+          <img src="/Images/DashCameraImages/DashCameraHowTo.jpg" alt="how-to" class="h-full w-full object-cover" />
         </div>
         <p class="mt-3 font-bold text-black text-3xl text-center">How To</p>
       </RouterLink>
@@ -29,7 +29,7 @@
       <RouterLink :to="'/dash-camera-info-support/troubleshooting'"
         class="bg-halfords-orange-400 w-72 h-72 p-6 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-halfords-orange-300 border border-black flex items-center justify-center">
-          <img src="/Images/DashCamera.png" alt="troubleshoot" class="w-full h-full object-contain" />
+          <img src="/Images/DashCameraImages/DashCameraTroubleshoot.jpg" alt="troubleshoot" class="h-full w-full object-cover" />
         </div>
         <p class="mt-3 font-bold text-black text-3xl text-center">Troubleshooting</p>
       </RouterLink>
