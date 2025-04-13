@@ -4,7 +4,7 @@ export default [
         Car: [
             { Make: "", Model: "", Year: "" },
         ],
-        PartImage: "/Images/RadioImages/.jpg",
+        PartImage: "/Images/RadioKitsImages/.jpg",
         KitType: "",
         Category: "",
         Part: "",
@@ -15,7 +15,7 @@ export default [
     //     Car: [
     //         { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
     //     ],
-    //     PartImage: "/Images/RadioImages/CT29AL02.jpg",
+    //     PartImage: "/Images/RadioKitsImages/CT29AL02.jpg",
     //     KitType: "",
     //     Category: "Audio Adapter",
     //     Part: "CT29AL02",
@@ -26,7 +26,7 @@ export default [
     //     Car: [
     //         { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
     //     ],
-    //     PartImage: "/Images/RadioImages/CT29AL03.jpg",
+    //     PartImage: "/Images/RadioKitsImages/CT29AL03.jpg",
     //     KitType: "",
     //     Category: "Audio Adapter",
     //     Part: "CT29AL03",
@@ -37,7 +37,7 @@ export default [
     //     Car: [
     //         { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
     //     ],
-    //     PartImage: "/Images/RadioImages/CT29AL04.jpg",
+    //     PartImage: "/Images/RadioKitsImages/CT29AL04.jpg",
     //     KitType: "",
     //     Category: "Audio Adapter",
     //     Part: "CT29AL04",
@@ -48,7 +48,7 @@ export default [
     //     Car: [
     //         { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
     //     ],
-    //     PartImage: "/Images/RadioImages/CT29BP02.jpg",
+    //     PartImage: "/Images/RadioKitsImages/CT29BP02.jpg",
     //     KitType: "",
     //     Category: "Audio Adapter",
     //     Part: "CT29BP02",
@@ -59,7 +59,7 @@ export default [
     //     Car: [
     //         { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
     //     ],
-    //     PartImage: "/Images/RadioImages/CT29JV01.jpg",
+    //     PartImage: "/Images/RadioKitsImages/CT29JV01.jpg",
     //     KitType: "",
     //     Category: "Audio Adapter",
     //     Part: "CT29JV01",
@@ -70,7 +70,7 @@ export default [
     //     Car: [
     //         { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
     //     ],
-    //     PartImage: "/Images/RadioImages/CT29KW01.jpg",
+    //     PartImage: "/Images/RadioKitsImages/CT29KW01.jpg",
     //     KitType: "",
     //     Category: "Audio Adapter",
     //     Part: "CT29KW01",

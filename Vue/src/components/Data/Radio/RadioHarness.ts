@@ -4,7 +4,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CTHVX02.jpg",
+        PartImage: "/Images/RadioKitsImages/CTHVX02.jpg",
         KitType: "",
         HarnessType: "SWC",
         Category: "Harness",
@@ -16,7 +16,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CTUVX01.jpg",
+        PartImage: "/Images/RadioKitsImages/CTUVX01.jpg",
         KitType: "",
         HarnessType: "SWC",
         Category: "Harness",
@@ -28,7 +28,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CT20VX05.jpg",
+        PartImage: "/Images/RadioKitsImages/CT20VX05.jpg",
         KitType: "",
         HarnessType: "No SWC",
         Category: "Harness",
@@ -40,7 +40,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CT10VX05.jpg",
+        PartImage: "/Images/RadioKitsImages/CT10VX05.jpg",
         KitType: "",
         HarnessType: "ISO T-Harness",
         Category: "Harness",

@@ -4,7 +4,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CTKVX02.jpg",
+        PartImage: "/Images/RadioKitsImages/CTKVX02.jpg",
         KitType: "",
         Category: "Kit",
         Part: "CTKVX02",
@@ -25,7 +25,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CTKVX40.jpg",
+        PartImage: "/Images/RadioKitsImages/CTKVX40.jpg",
         KitType: "",
         Category: "Kit",
         Part: "CTKVX40",
