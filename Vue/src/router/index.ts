@@ -12,6 +12,11 @@ import DashCameraInfoSupport from '../components/InfoSupport/DashCameraVue/DashC
 import DashCameraInformation from '../components/InfoSupport/DashCameraVue/DashCameraInformation.vue'
 import DashCameraHowTo from '../components/InfoSupport/DashCameraVue/DashCameraHowTo.vue'
 import DashCameraTroubleShooting from '../components/InfoSupport/DashCameraVue/DashCameraTroubleShooting.vue'
+import NextbaseTroubleshoot from '../components/InfoSupport/DashCameraVue/TroubleshootingPage/NextbaseTroubleshoot.vue'
+import IQTroubleshoot from '../components/InfoSupport/DashCameraVue/TroubleshootingPage/IQTroubleshoot.vue'
+import PiqoTroubleshoot from '../components/InfoSupport/DashCameraVue/TroubleshootingPage/PiqoTroubleshoot.vue'
+import RoadAngelTroubleshoot from '../components/InfoSupport/DashCameraVue/TroubleshootingPage/RoadAngelTroubleshoot.vue'
+import BlackVueTroubleshoot from '../components/InfoSupport/DashCameraVue/TroubleshootingPage/BlackVueTroubleshoot.vue'
 
 import RadioInfoSupport from '../components/InfoSupport/RadioVue/RadioInfoSupport.vue'
 import RadioInformation from '../components/InfoSupport/RadioVue/RadioInformation.vue'
@@ -93,6 +98,31 @@ const router = createRouter({
       name: 'dashCameraTroubleShooting',
       component: DashCameraTroubleShooting,
     },
+    {
+      path: '/dash-camera-info-support/nextbase-troubleshoot',
+      name: 'nextbaseTroubleShooting',
+      component: NextbaseTroubleshoot,
+    },   
+    {
+      path: '/dash-camera-info-support/iq-troubleshoot',
+      name: 'iqTroubleShooting',
+      component: IQTroubleshoot,
+    }, 
+    {
+      path: '/dash-camera-info-support/piqo-troubleshoot',
+      name: 'piqoTroubleShooting',
+      component: PiqoTroubleshoot,
+    },     
+    {
+      path: '/dash-camera-info-support/roadangel-troubleshoot',
+      name: 'roadangelTroubleShooting',
+      component: RoadAngelTroubleshoot,
+    },    
+    {
+      path: '/dash-camera-info-support/blackvue-troubleshoot',
+      name: 'blackvueTroubleShooting',
+      component: BlackVueTroubleshoot,
+    },   
 
     {
       path: '/radio-info-support',
