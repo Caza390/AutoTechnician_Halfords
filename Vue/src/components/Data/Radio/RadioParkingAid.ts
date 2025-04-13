@@ -4,7 +4,7 @@ export default [
         Car: [
             { Make: "", Model: "", Year: "" },
         ],
-        PartImage: "/Images/RadioImages/.jpg",
+        PartImage: "/Images/RadioKitsImages/.jpg",
         KitType: "",
         Category: "",
         Part: "",

@@ -23,7 +23,7 @@
       <RouterLink :to="'/radio-info-support'"
         class="bg-halfords-orange-400 w-72 h-72 p-6 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
         <div class="w-56 h-36 bg-white border border-black flex items-center justify-center">
-          <img src="/Images/RadioImages/RadioMain.png" alt="radio-info-support" class="w-full h-full object-cover" />
+          <img src="/Images/RadioImages/RadioMain.jpg" alt="radio-info-support" class="w-full h-full object-cover" />
         </div>
         <p class="mt-3 font-bold text-black text-3xl text-center">Radio Info/Support</p>
       </RouterLink>

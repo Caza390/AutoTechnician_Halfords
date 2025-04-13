@@ -4,7 +4,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CT23VX24.jpg",
+        PartImage: "/Images/RadioKitsImages/CT23VX24.jpg",
         KitType: "",
         Category: "Fascia",
         Part: "CT23VX24",
@@ -16,7 +16,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CT24VX28.jpg",
+        PartImage: "/Images/RadioKitsImages/CT24VX28.jpg",
         KitType: "",
         Category: "Fascia",
         Part: "CT24VX28",
@@ -28,7 +28,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Insignia", Year: "2008-2013" },
         ],
-        PartImage: "/Images/RadioImages/CT24VX39.jpg",
+        PartImage: "/Images/RadioKitsImages/CT24VX39.jpg",
         KitType: "",
         Category: "Fascia",
         Part: "CT24VX39",
@@ -42,7 +42,7 @@ export default [
         Car: [
             { Make: "Vauxhall", Model: "Vivaro", Year: "2011-2014" },
         ],
-        PartImage: "/Images/RadioImages/CT240.png",
+        PartImage: "/Images/RadioKitsImages/CT240.png",
         KitType: "Type-C",
         Category: "Fascia",
         Part: "CT240",
